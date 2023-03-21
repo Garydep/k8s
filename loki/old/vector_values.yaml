@@ -1,0 +1,21 @@
+role: Agent
+
+sinks:
+  my_sink_id:
+    type: loki
+    inputs:
+      - [
+         "my-source-or-transform-id",
+         "prefix-*"
+        ]
+
+    encoding: null
+    endpoint: http://localhost:3100
+    
+sources:
+  my_source_id:
+    type: syslog
+    address: 0.0.0.0:514
+    max_length: 102400
+    mode: tcp
+    path: "/path/to/socket"
